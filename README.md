@@ -7,7 +7,7 @@
 [![CI/CD Pipeline](https://github.com/bhushzn/urban-inteligence/actions/workflows/ci.yml/badge.svg)](https://github.com/bhushzn/urban-inteligence/actions)
 [![PWA](https://img.shields.io/badge/PWA-Offline--First-blueviolet.svg?logo=pwa&logoColor=white)](public/manifest.json)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115+-009688.svg?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
-[![YOLOv8](https://img.shields.io/badge/YOLOv8-Ultralytics-00ffff.svg?logo=pytorch&logoColor=white)](https://ultralytics.com)
+[![](https://img.shields.io/badge/-Ultralytics-00ffff.svg?logo=pytorch&logoColor=white)](https://ultralytics.com)
 [![Google Maps](https://img.shields.io/badge/Google%20Maps-Streets%20%7C%20Satellite-4285f4.svg?logo=googlemaps&logoColor=white)](https://maps.google.com)
 [![React 19](https://img.shields.io/badge/React-19.x-61dafb.svg?logo=react&logoColor=black)](https://react.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178c6.svg?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
@@ -21,7 +21,7 @@
 
 Over **4,700 fatalities** and tens of thousands of serious road injuries in India each year are caused directly by potholes, unattended road fissures, and unmonitored civic hazards. Traditional municipal inspection requires slow, expensive manual patrols that struggle to cover even 15% of city streets monthly.
 
-**CityEye** solves this crisis by transforming existing **public transport fleets (city buses, waste collection trucks, and municipal patrol vans)** into real-time scanning rovers. Focused on **Vidisha Municipal Corporation**, on-vehicle dashcams combined with edge/cloud **YOLOv8 computer vision models** and accurate GPS allow hazards to be detected, classified, geocoded, and live-dispatched to an interactive Command Center in **under 50 milliseconds**.
+**CityEye** solves this crisis by transforming existing **public transport fleets (city buses, waste collection trucks, and municipal patrol vans)** into real-time scanning rovers. Focused on **Vidisha Municipal Corporation**, on-vehicle dashcams combined with edge/cloud ** computer vision models** and accurate GPS allow hazards to be detected, classified, geocoded, and live-dispatched to an interactive Command Center in **under 50 milliseconds**.
 
 ---
 
@@ -64,7 +64,7 @@ CityEye employs a modular, fault-tolerant, edge-to-cloud architecture designed s
 - **Lightweight Multipart Ingestion**: Ingested frames are packaged with vehicle metadata, speed, route ID, and timestamp, sent via asynchronous HTTP POST multipart payloads under 150 KB.
 
 ### 2. Computer Vision & Machine Learning Pipeline
-- **YOLOv8 Multi-Class Detector**: Utilizing an optimized YOLOv8 neural network trained on Indian road conditions (RDD2022 dataset: longitudinal cracks, transverse cracks, alligator cracking, deep potholes, and municipal garbage overflow).
+- ** Multi-Class Detector**: Utilizing an optimized  neural network trained on Indian road conditions (RDD2022 dataset: longitudinal cracks, transverse cracks, alligator cracking, deep potholes, and municipal garbage overflow).
 - **Confidence Gating & Classification**:detections undergo confidence threshold filtering ($\tau \ge 0.10$). High-confidence detections automatically override client category tags, assign bounding box coordinates `[x, y, w, h]`, and dynamically assign severity (`High`, `Medium`, `Low`).
 - **Binary Magic-Byte Image Validation**: Uploaded files undergo binary header inspection (JPEG `FF D8 FF`, PNG `89 50 4E 47`, WebP `52 49 46 46`) to prevent MIME-spoofing and security vulnerabilities before reaching the model.
 
@@ -159,7 +159,7 @@ flowchart TD
     UseBrowserGPS --> ValidateHeader
     UseIPGeo --> ValidateHeader
     
-    ValidateHeader[🔍 Validate Magic Bytes\nVerify JPEG/PNG File Signature] --> RunYOLO[🧠 Run YOLOv8 Neural Inference\nDetect Potholes, Waste, Waterlogging, Fissures]
+    ValidateHeader[🔍 Validate Magic Bytes\nVerify JPEG/PNG File Signature] --> RunYOLO[🧠 Run  Neural Inference\nDetect Potholes, Waste, Waterlogging, Fissures]
     
     RunYOLO --> CheckConf{Confidence >= 0.10?}
     CheckConf -- Yes --> OverrideType[🏷️ Override Incident Type & Severity\nCompute Bounding Box x, y, w, h]
@@ -341,7 +341,7 @@ The system automatically initializes demo accounts on first boot:
 | `GET` | `/api/reports/audit-summary` | Municipal audit report with budget & contractor metrics | None |
 | `POST` | `/api/routing/safe-route` | Hazard-aware emergency route computation (Fastest vs Safest)| None |
 | `GET` | `/api/citizen/karma` | Citizen leaderboards and civic rewards points | None |
-| `POST` | `/api/analyze` | Real-time YOLOv8 inference preview on image | None |
+| `POST` | `/api/analyze` | Real-time  inference preview on image | None |
 | `WS` | `/ws` | Real-time WebSocket event feed for live incidents | None |
 
 ---
