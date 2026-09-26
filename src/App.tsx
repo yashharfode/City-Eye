@@ -2,7 +2,6 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import Navbar from "./components/Navbar";
 import MapView from "./components/MapView";
 import IncidentFeed from "./components/IncidentFeed";
-import AnalyticsPanel from "./components/AnalyticsPanel";
 import IncidentDetailDrawer from "./components/IncidentDetailDrawer";
 import ReportModal from "./components/ReportModal";
 import LoginModal from "./components/LoginModal";
@@ -254,9 +253,9 @@ export default function App() {
 
         {/* Two-Column Operational Split Layout - Responsive for All Laptop Widths */}
         <div className="flex-1 flex flex-col lg:flex-row gap-3 min-h-[460px] lg:min-h-[500px]">
-          {/* Left / Center: Large GIS Map + Analytics Panel */}
-          <div className={`flex-1 min-w-0 flex flex-col gap-3 ${mobileTab === "feed" ? "hidden lg:flex" : "flex"}`}>
-            <div className="flex-1 min-h-[380px] lg:min-h-[440px]">
+          {/* Left / Center: Large GIS Command Map */}
+          <div className={`flex-1 min-w-0 flex flex-col ${mobileTab === "feed" ? "hidden lg:flex" : "flex"}`}>
+            <div className="flex-1 min-h-[460px] lg:min-h-[500px]">
               <MapView
                 incidents={incidents}
                 activeIncident={activeIncident}
@@ -268,10 +267,6 @@ export default function App() {
                 onInspectIncident={(inc) => setInspectIncidentTarget(inc)}
               />
             </div>
-            <AnalyticsPanel
-              analytics={analytics}
-              onExpand={() => setShowAnalyticsModal(true)}
-            />
           </div>
 
           {/* Right: Live Incident Feed (Responsive Width for 1024px, 1280px, 1366px, 1440px, 1600px+ Laptops) */}
